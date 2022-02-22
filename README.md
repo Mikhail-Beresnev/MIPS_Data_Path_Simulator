@@ -30,7 +30,7 @@ Assembler (Stretch Goal):
 Page Break
  
 
-Project Roles: 
+# Project Roles: 
 
 Mikhail Beresnev: 
 
