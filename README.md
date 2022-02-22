@@ -1,5 +1,4 @@
 # MIPS Data Path Simulator
-Category: Team, Software, Graphical Data Path Simulator 
 
 Team: Mikhail Beresnev, Jared Balance, Kevin Hernandez 
 
@@ -26,8 +25,6 @@ Visualization:
 Assembler (Stretch Goal): 
 
 - Build an assembler which would accept MIPs instructions and decode them into binary instructions for the simulator to use. 
-
-Page Break
  
 
 # Project Roles: 
