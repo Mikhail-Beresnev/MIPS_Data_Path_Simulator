@@ -1,4 +1,4 @@
-# MIPS_Data_Path_Simulator
+# MIPS Data Path Simulator
 Category: Team, Software, Graphical Data Path Simulator 
 
 Team: Mikhail Beresnev, Jared Balance, Kevin Hernandez 
