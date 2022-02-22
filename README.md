@@ -4,13 +4,13 @@ Team: Mikhail Beresnev, Jared Balance, Kevin Hernandez
 
 Overview: We are looking to code a graphical representation of a processor with data paths highlighted as they are executed. The coding language for this project is to be C++. The project will be split into 4 main focuses/phases: research/planning, text-based functionality, visualization, and a stretch goal of an assembler.  
 
-Research/Planning:  
+## Research/Planning:  
 
 - Research how each block in the processor works individually, and make a detailed diagram with expected inputs/outputs of each block. 
 
 - Research how to make graphical objects in C++. 
 
-Text Based Functionality: 
+## Text Based Functionality: 
 
 - Code and test each of the blocks in the diagram. 
 
@@ -18,18 +18,18 @@ Text Based Functionality:
 
 - Test the combined functionality, printing the data paths into a text file as a specified instruction goes through the processor. 
 
-Visualization: 
+## Visualization: 
 
 - Create a visualized version of the text-based result, highlighting the data paths used by the processor for an instruction. 
 
-Assembler (Stretch Goal): 
+## Assembler (Stretch Goal): 
 
 - Build an assembler which would accept MIPs instructions and decode them into binary instructions for the simulator to use. 
  
 
 # Project Roles: 
 
-Mikhail Beresnev: 
+## Mikhail Beresnev: 
 
 Research/Planning: 
 
@@ -53,7 +53,7 @@ Assembler (Stretch Goal):
 
 - MIPS Instructions: lw, sw, j, jal, beq, bne 
 
-Jared Ballance: 
+## Jared Ballance: 
 
 Research/Planning: 
 
@@ -77,7 +77,7 @@ Assembler (Stretch Goal):
 
 - MIPS Instructions: add, sub, div, mult, nor, or 
 
-Kevin Hernandez: 
+## Kevin Hernandez: 
 
 Research/Planning: 
 
