@@ -49,7 +49,7 @@ Visualization:
 
 - Currently not enough information known to decide roles at this time 
 
-Assembler (Research Goal): 
+Assembler (Stretch Goal): 
 
 - MIPS Instructions: lw, sw, j, jal, beq, bne 
 
@@ -73,7 +73,7 @@ Visualization:
 
 - Currently not enough information known to decide roles at this time 
 
-Assembler (Research Goal): 
+Assembler (Stretch Goal): 
 
 - MIPS Instructions: add, sub, div, mult, nor, or 
 
@@ -95,6 +95,6 @@ Visualization:
 
 - Currently not enough information known to decide roles at this time 
 
-Assembler (Research Goal): 
+Assembler (Stretch Goal): 
 
 - MIPS Instructions: sll, srl, and, xor, addi 
