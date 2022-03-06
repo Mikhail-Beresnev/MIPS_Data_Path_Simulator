@@ -1,0 +1,53 @@
+Shift left 2
+
+- input: 32 bits (sign-extend)
+
+shifts the input left by two
+example: 0010 -> 1000
+
+- output 32 bits
+
+
+ALU Add
+
+input: 32 bits (shift left 2), 32 bits (Add)
+
+Add the two inputs
+example: 1 + 2 = 3
+
+output: 32 bits
+
+
+ALU control
+
+input: 2 bits (ALUop), 6 bits (funct)
+
+operation		ALUop	Funct	Output
+Load/store	00		XXXXXX	010 (add)
+BEQ			X1		XXXXXX	110 (sub)
+Arithmetic	1X		XX0000	010 (add)
+			1X		XX0010	110 (sub)
+			1X		XX0100	000 (sand)
+			1X		XX0101	001 (or)
+			1X		XX1010	111 (slt)
+
+output: 3 bits
+
+
+ALU
+
+input: 32 bits (Mux), 32 bits (Registers)
+
+Perform operation based on ALU control
+
+output: 32 bits
+
+
+Data Memory
+
+input: 32 bits (ALU), (32 bits) Registers, (2 bits?) MemWrite, (2 bits?) MemRead
+
+Store memory?
+
+
+Output: Read Data
