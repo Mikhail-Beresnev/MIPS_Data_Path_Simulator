@@ -35,7 +35,7 @@ Research/Planning:
 
 - Research into visualization 
 
-- Processor Blocks: Shift left 2, ALU Add, ALU, ALU control 
+- Processor Blocks: Shift left 2, ALU Add, ALU, ALU control, Data Memory
 
 - Construct detailed processor data path diagram compiled from research into processor blocks 
 
