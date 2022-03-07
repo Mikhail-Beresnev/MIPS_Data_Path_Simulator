@@ -6,10 +6,7 @@
 
 using namespace std;
 
-string left_shift_2(string input) {
-
-    return "0";
-}
+string left_shift_2(string input);
 
 #endif
 
