@@ -45,7 +45,7 @@ output: 32 bits
 
 Data Memory
 
-input: 32 bits (ALU), (32 bits) Registers, (2 bits?) MemWrite, (2 bits?) MemRead
+input: 32 bits (ALU), (32 bits) Registers, (1 bit) (MemWrite), 1 bit  (MemRead)
 
 Store memory?
 
