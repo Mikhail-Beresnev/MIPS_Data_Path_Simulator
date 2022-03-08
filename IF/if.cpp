@@ -4,7 +4,7 @@
 string PC(){
 bool binary; // flag if number is not binary
 do{
-cout << "Enter a Intruction in 32-bit binary format: ";
+cout << "Enter an Intruction in 32-bit binary format: ";
 cin >> Instruction; 
 int n = Instruction.length();
 char x[n + 1];
