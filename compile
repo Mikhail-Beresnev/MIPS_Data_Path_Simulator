@@ -1,0 +1,7 @@
+ls
+g++ -g -o main.o -c main.cpp
+g++ -g -o helpful.o -c ./helpful/helpful.cpp
+g++ -g -o id.o -c ./ID/id.cpp
+g++ -g -o if.o -c ./IF/if.cpp
+g++ -g -o mem.o -c ./MEM/mem.cpp
+g++ main.o helpful.o id.o if.o mem.o -o run
