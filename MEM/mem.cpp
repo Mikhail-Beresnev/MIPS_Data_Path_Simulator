@@ -7,7 +7,7 @@ string data_memory(string write_data, string address, string mem_write, string m
     }
     if (mem_write == "1") {
         data_memory.insert(make_pair(address, write_data));
-        // return nothing possibly?
+        // return nothing
     }
 
     if (mem_read == "1") {
