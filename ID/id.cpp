@@ -4,12 +4,8 @@
 string controlUnit (string input) {
     string controlSignals; // RegDst, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch, Jump, ALUOp1, ALUOp0
     // ALUOp1 & 0 are one signal with two bits output
-    string input2 = input.substr(26,6);
-    // input2.insert(0, "0.");
-    cout << input2 << endl;
-    int data = stoi(input2);
-    // int data = stoi(input.substr(26, 6));  // instruction bits 31-26
-    cout << data << endl;
+    int data = stoi(input.substr(0, 6));  // instruction bits 31-26
+
     switch (data){
     case 100:  // BEQ (000100)
     controlSignals = "0000001001";
@@ -29,10 +25,64 @@ string controlUnit (string input) {
     case 10:  // J (000010)
     controlSignals = "0000000100";   // XXX00001XX
     break;
-    default:
-    controlSignals = "1001000010";   // all R-Format instructions (all critical)
+    default:                         // Op Code: 000000
+    controlSignals = "1001000010";   // all R-Format instructions, specified with func field
     break;
     }
     return controlSignals;
 }
 
+void registerFile (string input, string controlSignals){
+    if (controlSignals == "1001000010"){    // R-TYPE Instruction
+        rsIndex = stoi(input.substr(6, 5), 0, 2);  // binary instruction bits 6-10 converted to decimal index
+        rtIndex = stoi(input.substr(11, 5), 0, 2);  // binary instruction bits 11-15 converted to decimal index
+        rdIndex = stoi(input.substr(16, 5), 0, 2);  // binary instruction bits 16-20 converted to decimal index
+    } else if ((controlSignals == "0000001001") || (controlSignals == "0111100000") || (controlSignals == "0100010000") || (controlSignals == "0101000000")){ // I-TYPE Instruction (LW, SW, ADDI, BRANCH)
+        rsIndex = stoi(input.substr(6, 5), 0, 2);  // binary instruction bits 6-10 converted to decimal index
+        rtIndex = stoi(input.substr(11, 5), 0, 2);  // binary instruction bits 11-15 converted to decimal index
+        // ADDRESS FUNCTION HERE
+    } else if (controlSignals == "0000000100"){ // J-Type Instruction
+        // ADDRESS FUNCTION HERE
+        cout << "addressing" << endl;
+    }
+}
+
+string rInstruction (string input) {
+    int func = stoi(input.substr(26,6));
+    string instructionType;
+
+    switch (func){
+        case 100000:
+        instructionType = "ADD";
+        break;
+        case 100100:
+        instructionType = "AND";
+        break;
+        case 11010:         // 011010
+        instructionType = "DIV";
+        break;
+        case 11000:         // 011000
+        instructionType = "MULT";
+        break;
+        case 100111:
+        instructionType = "NOR";
+        break;
+        case 100101:
+        instructionType = "OR";
+        break;
+        case 10:            // 000010
+        instructionType = "SRL";
+        break;
+        case 100010:
+        instructionType = "SUB";
+        break;
+        case 100110:
+        instructionType = "XOR";
+        break;
+        default:
+        instructionType = "SLL";    // SLL has func code of 0
+        break;
+    }
+
+    return instructionType;
+}
