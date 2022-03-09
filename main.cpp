@@ -15,20 +15,13 @@ string registers[32] = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0",
 int rsIndex;
 int rtIndex;
 int rdIndex;
-int addressOrImmediate;
+string addressOrImmediate;
 
 int main() {
     cout << "test" << endl;
-    // cout << controlUnit("00000000000000000000000000000100") << endl; // test BEQ
-    // cout << controlUnit("00000000000000000000000000000101") << endl; // test BNE
-    // cout << controlUnit("00000000000000000000000000100011") << endl; // test LW
-    // cout << controlUnit("00000000000000000000000000101011") << endl; // test SW
-    // cout << controlUnit("00000000000000000000000000001000") << endl; // test ADDI
-    // cout << controlUnit("00000000000000000000000000000010") << endl; // test J
-    // cout << controlUnit("00000000000000000000000000000000") << endl; // test ALL R-TYPE
-    // cout << rreturnReg("00000000000000000010100000000000") << endl;  // rd test
-    registerFile("00000011100001000010100000000000","1001000010");
-    cout << "rs Index: " << rsIndex << ", rt Index: " << rtIndex << ", rd Index: " << rdIndex << endl;
-    cout << "r instruction: " << rInstruction("00000000000000000010100000000000") << endl;
+
+    string input = "00100001000000111000000000001111";
+    idStage(input);
+
     return 0;
 }

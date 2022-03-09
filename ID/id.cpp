@@ -33,23 +33,28 @@ string controlUnit (string input) {
 }
 
 void registerFile (string input, string controlSignals){
+    string type;
+
     if (controlSignals == "1001000010"){            // R-TYPE Instruction
         rsIndex = stoi(input.substr(6, 5), 0, 2);   // binary instruction bits 6-10 converted to decimal index
         rtIndex = stoi(input.substr(11, 5), 0, 2);  // binary instruction bits 11-15 converted to decimal index
         rdIndex = stoi(input.substr(16, 5), 0, 2);  // binary instruction bits 16-20 converted to decimal index
-    } else if (controlSignals == "0000001001"){}(controlSignals == "0111100000") || (controlSignals == "0100010000") || (controlSignals == "0101000000")){ // I-TYPE Instruction (LW, SW, ADDI, BRANCH)
+    } else if ((controlSignals == "0000001001") || (controlSignals == "0111100000") || (controlSignals == "0100010000") || (controlSignals == "0101000000")){ // I-TYPE Instruction (LW, SW, ADDI, BRANCH)
         rsIndex = stoi(input.substr(6, 5), 0, 2);   // binary instruction bits 6-10 converted to decimal index
         rtIndex = stoi(input.substr(11, 5), 0, 2);  // binary instruction bits 11-15 converted to decimal index
-        addressOrImmediate = stoi(input.substr(16, 16));        // address (to label)convert string to binary bits 16-31
+        addressOrImmediate = input.substr(16, 16);        // address (to label)convert string to binary bits 16-31
+        signExtend();
     } else if (controlSignals == "0000000100"){     // J-Type Instruction
-        addressOrImmediate = stoi(input.substr(6,26));          // address to jump to convert string to binary bits 6-31
+        addressOrImmediate = input.substr(6,26);          // address to jump to convert string to binary bits 6-31
     }
 }
 
-string rInstruction (string input) {
-    int func = stoi(input.substr(26,6));
+string instructionType (string input, string controlSignals) {
     string instructionType;
 
+    if (controlSignals == "1001000010"){
+    int func = stoi(input.substr(26,6));
+    addressOrImmediate = "-1";    // clear address/immediate var for R-TYPE instructions
     switch (func){
         case 100000:
         instructionType = "ADD";
@@ -82,10 +87,53 @@ string rInstruction (string input) {
         instructionType = "SLL";    // SLL has func code of 0
         break;
     }
-
+    } else if (controlSignals == "0000001001"){ // BRANCHING
+        int branch = stoi(input.substr(0, 6));
+        if (branch == 100){
+            instructionType == "BEQ";
+        } else if (branch == 101){
+            instructionType == "BNE";
+        }
+    } else if (controlSignals == "0111100000"){
+        instructionType = "LW";
+    } else if (controlSignals == "0100010000"){
+        instructionType = "SW";
+    } else if (controlSignals == "0101000000"){
+        instructionType = "ADDI";
+    } else if (controlSignals == "0000000100"){
+        instructionType == "J";
+    }
     return instructionType;
 }
 
-string signExtend (string input){
-
+void signExtend (){
+    int significantBit = stoi(addressOrImmediate.substr(0,1));
+    string extendBits;
+    if (significantBit == 1){
+        extendBits = "1111111111111111";
+    } else if (significantBit == 0){
+        extendBits = "0000000000000000";
+    }
+    addressOrImmediate = extendBits + addressOrImmediate;
 }
+
+ void idStage (string input){
+    string controlSignals = controlUnit(input);
+    registerFile(input, controlSignals);
+    string instructionCall = instructionType(input, controlSignals);
+
+    cout << "Instruction: " << instructionCall << endl;
+    if (controlSignals != "0000000100"){    // rs and rt fields for all except J-TYPE instructions
+        cout << "rs Index: " << rsIndex << ", rt Index: " << rtIndex;
+    }
+    if (controlSignals == "1001000010"){    // rd field only for R-TYPE instructions
+        cout << ", rd Index: " << rdIndex << endl;
+    } else if (controlSignals == "0000000100"){
+        cout << "jump address: " << addressOrImmediate << endl;
+    } else if (controlSignals != "0000001001"){
+        cout << ", immediate: " << addressOrImmediate << endl;
+    } else {
+        cout << ", branch offset: " << addressOrImmediate << endl;
+    }
+ }
+ 
