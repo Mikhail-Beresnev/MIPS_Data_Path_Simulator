@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <map>
 // #include "FILENAME.H"
 #include "./EXE/exe.h"
 #include "./ID/id.h"
@@ -8,6 +9,7 @@
 using namespace std;
 
 int data_mem[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+map<string, string> data_memory;
 // string controlUnit(string input);
 
 int main() {
