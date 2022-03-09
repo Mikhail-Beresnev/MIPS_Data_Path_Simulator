@@ -11,10 +11,11 @@ extern string registers[];
 extern int rsIndex;
 extern int rtIndex;
 extern int rdIndex;
-extern int address;
+extern int addressOrImmediate;
 
 string controlUnit (string input);  // determines control signals from binary input
 void registerFile (string input, string controlSignals);    // defines rd, rs, rt from binary input
 string rInstruction (string input); // reads func field of r-type instruction to determine operation
+string signExtend (string input);
 
 #endif

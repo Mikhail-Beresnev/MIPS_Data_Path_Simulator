@@ -15,7 +15,7 @@ string registers[32] = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0",
 int rsIndex;
 int rtIndex;
 int rdIndex;
-int address;
+int addressOrImmediate;
 
 int main() {
     cout << "test" << endl;

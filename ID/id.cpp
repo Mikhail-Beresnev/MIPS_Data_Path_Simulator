@@ -33,17 +33,16 @@ string controlUnit (string input) {
 }
 
 void registerFile (string input, string controlSignals){
-    if (controlSignals == "1001000010"){    // R-TYPE Instruction
-        rsIndex = stoi(input.substr(6, 5), 0, 2);  // binary instruction bits 6-10 converted to decimal index
+    if (controlSignals == "1001000010"){            // R-TYPE Instruction
+        rsIndex = stoi(input.substr(6, 5), 0, 2);   // binary instruction bits 6-10 converted to decimal index
         rtIndex = stoi(input.substr(11, 5), 0, 2);  // binary instruction bits 11-15 converted to decimal index
         rdIndex = stoi(input.substr(16, 5), 0, 2);  // binary instruction bits 16-20 converted to decimal index
-    } else if ((controlSignals == "0000001001") || (controlSignals == "0111100000") || (controlSignals == "0100010000") || (controlSignals == "0101000000")){ // I-TYPE Instruction (LW, SW, ADDI, BRANCH)
-        rsIndex = stoi(input.substr(6, 5), 0, 2);  // binary instruction bits 6-10 converted to decimal index
+    } else if (controlSignals == "0000001001"){}(controlSignals == "0111100000") || (controlSignals == "0100010000") || (controlSignals == "0101000000")){ // I-TYPE Instruction (LW, SW, ADDI, BRANCH)
+        rsIndex = stoi(input.substr(6, 5), 0, 2);   // binary instruction bits 6-10 converted to decimal index
         rtIndex = stoi(input.substr(11, 5), 0, 2);  // binary instruction bits 11-15 converted to decimal index
-        // ADDRESS FUNCTION HERE
-    } else if (controlSignals == "0000000100"){ // J-Type Instruction
-        // ADDRESS FUNCTION HERE
-        cout << "addressing" << endl;
+        addressOrImmediate = stoi(input.substr(16, 16));        // address (to label)convert string to binary bits 16-31
+    } else if (controlSignals == "0000000100"){     // J-Type Instruction
+        addressOrImmediate = stoi(input.substr(6,26));          // address to jump to convert string to binary bits 6-31
     }
 }
 
@@ -85,4 +84,8 @@ string rInstruction (string input) {
     }
 
     return instructionType;
+}
+
+string signExtend (string input){
+
 }
