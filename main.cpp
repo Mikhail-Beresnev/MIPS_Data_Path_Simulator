@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 // #include "FILENAME.H"
-#include "./MEM/mem.h"
+#include "./EXE/exe.h"
 #include "./ID/id.h"
 //#include "./IF/if.h"
 

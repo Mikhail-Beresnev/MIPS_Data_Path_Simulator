@@ -11,8 +11,8 @@ string add_binary(string input_1, string input_2);
 
 string sub_binary(string input_1, string input_2);
 
-int binary_to_int(string input);
+unsigned long binary_to_int(string input);
 
-string int_to_binary(int input);
+string int_to_binary(unsigned long input);
 
 #endif

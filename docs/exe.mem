@@ -24,12 +24,12 @@ input: 2 bits (ALUop), 6 bits (funct)
 
 operation	ALUop	Funct	Output
 Load/store	00	XXXXXX	010 (add)
-BEQ		X1	XXXXXX	110 (sub)
+BEQ			X1	XXXXXX	110 (sub)
 Arithmetic	1X	XX0000	010 (add)
-		1X	XX0010	110 (sub)
-		1X	XX0100	000 (sand)
-		1X	XX0101	001 (or)
-		1X	XX1010	111 (slt)
+			1X	XX0010	110 (sub)
+			1X	XX0100	000 (and)
+			1X	XX0101	001 (or)
+			1X	XX1010	111 (slt)
 
 output: 3 bits
 
