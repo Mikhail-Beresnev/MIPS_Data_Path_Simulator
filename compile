@@ -1,4 +1,3 @@
-ls
 g++ -g -o main.o -c main.cpp
 g++ -g -o helpful.o -c ./helpful/helpful.cpp
 g++ -g -o id.o -c ./ID/id.cpp
