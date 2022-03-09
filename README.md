@@ -1,6 +1,6 @@
 # MIPS Data Path Simulator
 
-Team: Mikhail Beresnev, Jared Balance, Kevin Hernandez 
+Team: Mikhail Beresnev, Jared Ballance, Kevin Hernandez 
 
 Overview: We are looking to code a graphical representation of a processor with data paths highlighted as they are executed. The coding language for this project is to be C++. The project will be split into 4 main focuses/phases: research/planning, text-based functionality, visualization, and a stretch goal of an assembler.  
 
