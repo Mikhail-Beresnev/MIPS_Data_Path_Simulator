@@ -9,6 +9,34 @@ string alu_add(string input_1, string input_2) {
     return add_binary(input_1, input_2);
 }
 
+string alu_sub(string input_1, string input_2) {
+    return sub_binary(input_1, input_2);
+}
+
+string alu_and(string input_1, string input_2) {
+    string output = "";
+    for (int i = 0; i < input_1.length(); i++) {
+        if (input_1.at(i) == '1' && input_2.at(i) == '1') {
+            output.append('1');
+        } else {
+            output.append('0');
+        }
+    }
+    return output;
+}
+
+string alu_or(string input_1, string input_2) {
+    string output = "";
+    for (int i = 0; i < input_1.length(); i++) {
+        if (input_1.at(i) == '1' || input_2.at(i) == '1') {
+            output.append('1');
+        } else {
+            output.append('0');
+        }
+    }
+    return output;
+}
+
 string alu_control(string aluop, string funct) {
     funct = funct.substr(2, 4);
     // load/store word

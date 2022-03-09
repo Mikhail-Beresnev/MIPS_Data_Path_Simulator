@@ -24,3 +24,11 @@ string sub_binary(string input_1, string input_2) {
 
     return output;
 }
+
+int binary_to_int(string input) {
+    return bitset<32>(input).to_ulong();
+}
+
+string int_to_binary(int input) {
+    return bitset<32>(input).to_string();
+}

@@ -11,6 +11,12 @@ string left_shift_2(string input);
 
 string alu_add(string input_1, string input_2);
 
+string alu_sub(string input_1, string input_2);
+
+string alu_and(string input_1, string input_2);
+
+string alu_or(string input_1, string input_2);
+
 string alu_control(string aluop, string funct);
 
 
