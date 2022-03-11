@@ -20,10 +20,32 @@ int rdIndex;
 string addressOrImmediate;
 
 int main() {
-    int testVal = 1;
+    // int testVal = 5;
     cout << "test" << endl;
-    string binaryTest = int_to_binary(testVal);
-    cout << binaryTest << endl;
+
+    cout << "Register Data: ";
+        for (int i = 0; i < 32; i++){
+            cout << registers[i];
+            if (i != 31){
+                cout << ", ";
+            } else {
+                cout << endl;
+            }
+        }
+
+    string operation = getOperation();
+    // string opCode = generateOpCode(operation);      // NOT PROGRAMMED YET
+    // string funcCode = generateFuncCode(operation);  // NOT PROGRAMMED YET
+    string rd = getDestinationReg();
+    string rs = getStartReg();
+    string rt = getSecondReg();
+    string immediate = getImmediate();
+    string offset = getAddressOffset();
+    // string label = getLabel();                       // NOT PROGRAMMED YET
+    // regPrompts();                                    // NOT PROGRAMMED YET
+
+    // string binaryTest = int_to_binary(testVal);
+    // cout << binaryTest << endl;
     // string input = "00100001000000111000000000001111";
     // idStage(input);
 
