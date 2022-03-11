@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern string registers[];
+// extern string registers[];
 extern int rsIndex;
 extern int rtIndex;
 extern int rdIndex;

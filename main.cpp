@@ -5,6 +5,8 @@
 #include "./EXE/exe.h"
 #include "./ID/id.h"
 //#include "./IF/if.h"
+#include "./UI/ui.h"
+#include "./helpful/helpful.h"
 
 using namespace std;
 
@@ -18,10 +20,13 @@ int rdIndex;
 string addressOrImmediate;
 
 int main() {
+    int testVal = 1;
     cout << "test" << endl;
+    string binaryTest = int_to_binary(testVal);
+    cout << binaryTest << endl;
+    // string input = "00100001000000111000000000001111";
+    // idStage(input);
 
-    string input = "00100001000000111000000000001111";
-    idStage(input);
 
     return 0;
 }

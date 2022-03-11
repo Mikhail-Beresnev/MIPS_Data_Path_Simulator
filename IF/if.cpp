@@ -26,6 +26,7 @@ string intructionMemory(string input){
 string a,b,c,d,e,f;
 // instruction Memory function already in the ID section, 
 // no point of having one except to maybe display text that this block has been used
+return "0"; // TEMPORARY SO NO COMPILE ERRORS
 }
 
 
@@ -33,7 +34,7 @@ string Adder(string inputA, string inputB){
 // AluAdd function already in the ID section, they perform similar task,
 // we could use that function inside this one and replace a varible for the constant 4,
 // no point of having one except to maybe display text that this block has been used
-
+return "0"; // TEMPORARY SO NO COMPILE ERRORS
 }
 
 
