@@ -22,22 +22,28 @@ string PC() {
     // while(n!=32 || binary = false);
     return "0";
 }
-
-//  Asks the User to Input an Instruction in Binary Format
 string intructionMemory(string input){
-    return "0";
-
+string a,b,c,d,e,f;
+// instruction Memory function already in the ID section, 
+// no point of having one except to maybe display text that this block has been used
 }
 
-// Asks the User to Input an Instruction in Binary Format
+
 string Adder(string inputA, string inputB){
-    return "0";
-
+// AluAdd function already in the ID section, they perform similar task,
+// we could use that function inside this one and replace a varible for the constant 4,
+// no point of having one except to maybe display text that this block has been used
 
 }
 
-// Asks the User to Input an Instruction in Binary Format
-string Mux(string input){
-    return "0";
+
+
+string Mux(string input00, string input01, string controlSignal){
+  if(controlSignal == "1001000010"){
+return input00;
+  }
+ else { 
+return input01;
+  }
 
 }
