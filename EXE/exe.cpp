@@ -2,9 +2,7 @@
 
 string left_shift_2(string input) {
     // input is 32 bits
-    cout << input << endl;
-    cout << input.substr(0, 30) << endl;
-    return input.substr(0, 30) + "00";
+    return input.substr(2, 30) + "00";
 } 
 
 string alu(string input_1, string input_2, string control) {
