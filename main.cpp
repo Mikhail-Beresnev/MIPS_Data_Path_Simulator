@@ -26,6 +26,7 @@ string addressOrImmediate;
 
 string userInput();
 void overall(); // change name to test later
+void test_no_input(string functionName, string (*function)(string), string expected);
 void test_single_input(string functionName, string (*function)(string), string expected, string input);
 void test_double_input(string functionName, string (*function)(string, string), string expected, string input, string input_2);
 void test_triple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3);
@@ -67,6 +68,17 @@ string userInput() {
     return input;
 }
 
+void test_no_input(string functionName, string (*function)(string), string expected){
+       string actual = function();
+    cout << functionName << " : ";
+    if (expected == actual) {
+        cout << "Pass";
+    } else {
+        cout << "Fail";
+    }
+    cout << endl;
+}
+
 void test_single_input(string functionName, string (*function)(string), string expected, string input) {
     string actual = function(input);
     cout << functionName << " : ";
@@ -103,7 +115,7 @@ void test_triple_input(string functionName, string (*function)(string, string, s
 void overall() {
     // Format: Function Name, &Function, Extected, Input, ...
     // IF
-    cout << "Testing IF stage: " << endl;
+    cout << endl << "Testing IF stage: " << endl;
     test_triple_input("MUX", &Mux, "input00", "input00", "input01","0");
     // ID
     cout << endl << "Testing ID stage: " << endl;
