@@ -103,12 +103,13 @@ void test_triple_input(string functionName, string (*function)(string, string, s
 void overall() {
     // Format: Function Name, &Function, Extected, Input, ...
     // IF
-
+    cout << "Testing IF stage: " << endl;
     // ID
-    cout << "Testing ID stage: " << endl;
+    cout << endl << "Testing ID stage: " << endl;
     test_single_input("Control Unit", &controlUnit, "0000000100", extend_reverse("00001"));
-    test_double_input("Instructon Type", &instructionType, "XOR", extend_reverse("100110"), "1001000010");
+    test_double_input("Instructon Type", &instructionType, "XOR", extend("100110"), "1001000010");
     // EXE
+    cout << endl << "Testing EXE stage: " << endl;
     test_single_input("Left Shift 2", &left_shift_2, extend("100000"), extend("1000"));
     test_double_input("ALU Add", &alu_add, extend("10"), extend("1"), extend("1"));
     test_double_input("ALU Sub", &alu_sub, extend("1"), extend("10"), extend("1"));
@@ -119,9 +120,9 @@ void overall() {
     test_double_input("And Gate", &and_gate, "00000000000000000000000000000001", "00000000000000000000000000000010", "00000000000000000000000000000001");
     
     // MEM
-
+    cout << << endl << "Testing MEM stage: " << endl;
     // WB
-
+    cout << endl << "Testing WB stage: " << endl;
 }
 
 
