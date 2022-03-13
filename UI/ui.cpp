@@ -204,8 +204,10 @@ string regPrompts(string opCode, string funcCode){
     } else if ((opCode == "100011") || (opCode == "101011")){
         instruction = lswInstructionPrompts(opCode);
     } else if ((opCode == "000100") || (opCode == "000101")){
-        branchInstructionPrompts();     // figure out converion for label to binary first
-    } // ADD JUMPING INSTRUCTION!!
+        branchInstructionPrompts(opCode);
+    } else if (opCode == "000010"){
+        jumpInstructionPrompts(opCode);
+    }
     return instruction; // return converted instruction in binary
 }
 
@@ -258,7 +260,7 @@ string lswInstructionPrompts(string opCode){
     return opCode + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + offset.substr(16,16);
 }
 
-void branchInstructionPrompts(){
+string branchInstructionPrompts(string opCode){
     cout << "Enter the starting register (rs): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
     int rs = getRegIndex();
@@ -269,8 +271,24 @@ void branchInstructionPrompts(){
     userInstruction = userInstruction + ", ";
     cout << endl;
     string label = getLabel();
+    string labelAddress = labelToAddress(label, opCode);
+    return opCode + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + labelAddress;
 }
 
-void jumpInstructionPrompts(){
-    
+string jumpInstructionPrompts(string opCode){
+    string label = getLabel();
+    string labelAddress = labelToAddress(label, opCode);
+    return opCode + labelAddress;
+}
+
+string labelToAddress(string label, string opCode){
+    int randomAddress = 1;
+    while ((randomAddress % 4) != 0){
+        randomAddress = rand();
+    }
+    if ((opCode == "000100") || (opCode == "000101")){
+        return int_to_binary(randomAddress).substr(16,16);  // 16 bit address for branching
+    } else if (opCode == "000010"){
+        return int_to_binary(randomAddress).substr(6,26);   // 26 bit address for jumping
+    }
 }

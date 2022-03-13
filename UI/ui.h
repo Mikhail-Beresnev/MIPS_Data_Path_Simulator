@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdlib.h>
 #include "../helpful/helpful.h"
 
 using namespace std;
@@ -25,7 +26,8 @@ string regPrompts(string opCode, string funcCode);
 string rinstructionPrompts(string funcCode);
 string addiInstructionPrompts();
 string lswInstructionPrompts(string opCode);
-void branchInstructionPrompts();
-void jumpInstructionPrompts();
+string branchInstructionPrompts(string opCode);
+string jumpInstructionPrompts(string opCode);
+string labelToAddress(string label, string opCode);
 
 #endif
