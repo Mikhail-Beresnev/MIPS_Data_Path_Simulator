@@ -4,7 +4,7 @@
 // #include "FILENAME.H"
 #include "./EXE/exe.h"
 #include "./ID/id.h"
-//#include "./IF/if.h"
+#include "./IF/if.h"
 #include "./UI/ui.h"
 #include "./helpful/helpful.h"
 
@@ -26,14 +26,29 @@ string addressOrImmediate;
 int main() {
     string input;
     string funcCode = "0";
-    string operation = getOperation();
-    string opCode = generateOpCode(operation);
-    if (opCode == "000000"){
-        funcCode = generateFuncCode(operation);
+    int instructionInputType = -1;
+    cout << "Would you like to enter a 32-bit binary instruction or in MIPS format?" << endl;
+    while ((instructionInputType < 0) || (instructionInputType > 1)){
+        cout << "(0 for binary, 1 for MIPS)" << endl;
+        cin >> instructionInputType;
+        if ((instructionInputType < 0) || (instructionInputType > 1)){
+            cout << "You have entered an invalid input!" << endl << "Please try again..." << endl;
+        }
     }
-    input = regPrompts(opCode, funcCode);
-    cout << endl << "Your instruction: " << userInstruction << endl;
-    cout << "Binary Form: " << input << endl;
+    if (instructionInputType == 0){
+        input = binaryInput();
+    } else if (instructionInputType == 1){
+        string operation = getOperation();
+        string opCode = generateOpCode(operation);
+        if (opCode == "000000"){
+            funcCode = generateFuncCode(operation);
+        }
+        input = regPrompts(opCode, funcCode);
+        cout << endl << "Your instruction: " << userInstruction << endl;
+        cout << "Binary Form: " << input << endl;
+    }
+
+    idStage(input);
     // string label = getLabel();                       // NOT PROGRAMMED YET
     // regPrompts();                                    // NOT PROGRAMMED YET
 
