@@ -26,9 +26,9 @@ string addressOrImmediate;
 
 string userInput();
 void test();
-void single_input_test(string functionName, string function, string expected, string input);
-void double_input_test(string functionName, string function, string expected, string input, string input_2);
-void triple_input_test(string functionName, string function, string expected, string input, string input_2, string input_3);
+void test_single_input(string functionName, string function, string expected, string input);
+void test_double_input(string functionName, string function, string expected, string input, string input_2);
+void test_triple_input(string functionName, string function, string expected, string input, string input_2, string input_3);
 
 int main() {
     string input = userInput();
@@ -67,7 +67,7 @@ string userInput() {
     return input;
 }
 
-void single_input_test(string functionName, string function, string expected, string input) {
+void test_single_input(string functionName, string function, string expected, string input) {
     string acutal = function(input);
     cout << functionName << " : ";
     if (expected == actual) {
@@ -78,7 +78,7 @@ void single_input_test(string functionName, string function, string expected, st
     cout << endl;
 }
 
-void double_input_test(string functionName, string function, string expected, string input, string input_2) {
+void test_double_input(string functionName, string function, string expected, string input, string input_2) {
     string acutal = function(input, input_2);
     cout << functionName << " : ";
     if (expected == actual) {
@@ -89,7 +89,7 @@ void double_input_test(string functionName, string function, string expected, st
     cout << endl;
 }
 
-void triple_input_test(string functionName, string function, string expected, string input, string input_2, string input_3) {
+void test_triple_input(string functionName, string function, string expected, string input, string input_2, string input_3) {
     string acutal = function(input, input_2, input_3);
     cout << functionName << " : ";
     if (expected == actual) {
@@ -106,7 +106,7 @@ void test() {
     // ID
 
     // EXE
-
+    single_input_test
     // MEM
 
     // WB
