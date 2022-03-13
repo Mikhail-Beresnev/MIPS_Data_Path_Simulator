@@ -101,12 +101,14 @@ void test_triple_input(string functionName, string (*function)(string, string, s
 }
 
 void overall() {
+    // Format: Function Name, &Function, Extected, Input, ...
     // IF
 
     // ID
 
     // EXE
     test_single_input("Left Shift 2", &left_shift_2, "00000000000000000000000000100000", "00000000000000000000000000001000");
+
 
     // MEM
 

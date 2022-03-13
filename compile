@@ -6,3 +6,4 @@ g++ -g -o exe.o -c ./EXE/exe.cpp
 g++ -g -o mem.o -c ./MEM/mem.cpp
 g++ -g -o ui.o -c ./UI/ui.cpp
 g++ main.o helpful.o id.o if.o exe.o mem.o ui.o -o run
+./run
