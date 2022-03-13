@@ -49,11 +49,11 @@ void registerFile (string input, string controlSignals){
     }
 }
 
-string instructionType (string funcCode, string controlSignals) {
+string instructionType (string input, string controlSignals) {
     string instructionType;
-    int func;
+
     if (controlSignals == "1001000010"){
-    func = stoi(funcCode);
+    int func = stoi(input.substr(26,6));
     addressOrImmediate = "-1";    // clear address/immediate var for R-TYPE instructions
     switch (func){
         case 100000:
@@ -120,7 +120,7 @@ void signExtend (){
  void idStage (string input){
     string controlSignals = controlUnit(input);
     registerFile(input, controlSignals);
-    string instructionCall = instructionType(input.substr(26,6), controlSignals);
+    string instructionCall = instructionType(input, controlSignals);
 
     cout << "Instruction: " << instructionCall << endl;
     if (controlSignals != "0000000100"){    // rs and rt fields for all except J-TYPE instructions
