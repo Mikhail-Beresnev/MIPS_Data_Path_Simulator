@@ -40,7 +40,7 @@ return "0"; // TEMPORARY SO NO COMPILE ERRORS
 
 
 string Mux(string input00, string input01, string controlSignal){
-  if(controlSignal == "1001000010"){
+  if(controlSignal == "0"){
 return input00;
   }
  else { 
