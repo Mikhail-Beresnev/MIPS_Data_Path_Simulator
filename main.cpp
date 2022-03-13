@@ -25,15 +25,15 @@ int rdIndex;
 string addressOrImmediate;
 
 string userInput();
-void test();
-void test_single_input(string functionName, string function, string expected, string input);
-void test_double_input(string functionName, string function, string expected, string input, string input_2);
-void test_triple_input(string functionName, string function, string expected, string input, string input_2, string input_3);
+void overall(); // change name to test later
+void test_single_input(string functionName, string (*function)(string), string expected, string input);
+void test_double_input(string functionName, string (*function)(string, string), string expected, string input, string input_2);
+void test_triple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3);
 
 int main() {
-    string input = userInput();
-
-    idStage(input);
+    // string input = userInput();
+    overall();
+    // idStage(input);
     // string label = getLabel();                       // NOT PROGRAMMED YET
     // regPrompts();                                    // NOT PROGRAMMED YET
 
@@ -67,8 +67,8 @@ string userInput() {
     return input;
 }
 
-void test_single_input(string functionName, string function, string expected, string input) {
-    string acutal = function(input);
+void test_single_input(string functionName, string (*function)(string), string expected, string input) {
+    string actual = function(input);
     cout << functionName << " : ";
     if (expected == actual) {
         cout << "Pass";
@@ -78,8 +78,8 @@ void test_single_input(string functionName, string function, string expected, st
     cout << endl;
 }
 
-void test_double_input(string functionName, string function, string expected, string input, string input_2) {
-    string acutal = function(input, input_2);
+void test_double_input(string functionName, string (*function)(string, string), string expected, string input, string input_2) {
+    string actual = function(input, input_2);
     cout << functionName << " : ";
     if (expected == actual) {
         cout << "Pass";
@@ -89,8 +89,8 @@ void test_double_input(string functionName, string function, string expected, st
     cout << endl;
 }
 
-void test_triple_input(string functionName, string function, string expected, string input, string input_2, string input_3) {
-    string acutal = function(input, input_2, input_3);
+void test_triple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3) {
+    string actual = function(input, input_2, input_3);
     cout << functionName << " : ";
     if (expected == actual) {
         cout << "Pass";
@@ -100,13 +100,14 @@ void test_triple_input(string functionName, string function, string expected, st
     cout << endl;
 }
 
-void test() {
+void overall() {
     // IF
 
     // ID
 
     // EXE
-    single_input_test
+    test_single_input("Left Shift 2", &left_shift_2, "00000000000000000000000000100000", "00000000000000000000000000001000");
+
     // MEM
 
     // WB

@@ -2,6 +2,8 @@
 
 string left_shift_2(string input) {
     // input is 32 bits
+    cout << input << endl;
+    cout << input.substr(0, 30) + "00" << endl;
     return input.substr(0, 30) + "00";
 } 
 
