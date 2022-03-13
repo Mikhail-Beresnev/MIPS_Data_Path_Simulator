@@ -19,4 +19,6 @@ string extract_bits(string input, int start, int end);
 
 string extend(string input);
 
+string extend_reverse(string input);
+
 #endif
