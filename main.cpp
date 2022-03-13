@@ -103,11 +103,12 @@ void test_triple_input(string functionName, string (*function)(string, string, s
 void overall() {
     // Format: Function Name, &Function, Extected, Input, ...
     // IF
-
+    cout << "Testing IF stage: " << endl;
+    binaryInput();
+    test_triple_input("MUX", &Mux, "input00", "input00", "input01","0");
     // ID
     cout << "Testing ID stage: " << endl;
     test_single_input("Control Unit", &controlUnit, "0000000100", extend_reverse("00001"));
-    test_double_input("Instructon Type", &instructionType, "XOR", )
     // EXE
     test_single_input("Left Shift 2", &left_shift_2, extend("100000"), extend("1000"));
     test_double_input("ALU Add", &alu_add, extend("10"), extend("1"), extend("1"));
