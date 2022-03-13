@@ -43,3 +43,10 @@ string extend(string input) {
     }
     return input;
 }
+
+string extend_reverse(string input) {
+    while (input.size() != 32) {
+        input = input + "0";
+    }
+    return input;
+}
