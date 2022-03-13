@@ -105,7 +105,7 @@ void overall() {
     // IF
 
     // ID
-
+    test_single_input("Control Unit", &controlUnit, "0000000100", "00001000000000000000000000000000");
     // EXE
     test_single_input("Left Shift 2", &left_shift_2, "00000000000000000000000000100000", "00000000000000000000000000001000");
 

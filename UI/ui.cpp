@@ -272,7 +272,7 @@ string branchInstructionPrompts(string opCode){
     cout << endl;
     string label = getLabel();
     string labelAddress = labelToAddress(label, opCode);
-    return opCode + rs + rt + labelAddress;
+    return opCode + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + labelAddress;
 }
 
 string jumpInstructionPrompts(string opCode){
