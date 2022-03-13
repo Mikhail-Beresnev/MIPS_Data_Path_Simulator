@@ -109,12 +109,12 @@ void overall() {
     // EXE
     test_single_input("Left Shift 2", &left_shift_2, extend("100000"), extend("1000"));
     test_double_input("ALU Add", &alu_add, extend("10"), extend("1"), extend("1"));
-    test_double_input("ALU Sub", &alu_sub, extend("1"), extend("10"), extend("1");
-    test_double_input("ALU And", &alu_and, "00000000000000000000000000000001", "00000000000000000000000000000001", "00000000000000000000000000000001");
-    test_double_input("ALU Or", &alu_or, "00000000000000000000000000000001", "00000000000000000000000000000000", "00000000000000000000000000000001");
-    test_double_input("ALU Slt", &alu_slt, "00000000000000000000000000000001", "00000000000000000000000000000001", "00000000000000000000000000000001");
-    test_double_input("ALU Control", &alu_control, "00000000000000000000000000000001", "00000000000000000000000000000010", "00000000000000000000000000000001");
-    test_double_input("And Gate", &and_gate, "00000000000000000000000000000001", "00000000000000000000000000000010", "00000000000000000000000000000001");
+    test_double_input("ALU Sub", &alu_sub, extend("1"), extend("10"), extend("1"));
+    test_double_input("ALU And", &alu_and, extend("1"), extend("1"), extend("1"));
+    test_double_input("ALU Or", &alu_or, extend("1"), extend("0"), extend("1"));
+    test_double_input("ALU Slt", &alu_slt, extend("1"), extend("1"), extend("11"));
+    test_double_input("ALU Control", &alu_control,  "110", "0000001001", "000000");
+    test_double_input("And Gate", &and_gate,  "0", "0", "1");
     
     // MEM
 
