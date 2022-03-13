@@ -174,14 +174,8 @@ string getLabel(){
     return label;
 }
 
-string regPrompts(string opCode){
-    int rd;
-    int rs;
-    int rt;
-    string immediate;
-    string offset;
-    string label;
-
+string regPrompts(string opCode, string funcCode){
+    string instruction = "0";
     cout << endl << "Register Data: " << endl;
         for (int i = 0; i < 32; i++){
             cout << registers[0][i] << " = " << registers[1][i];
@@ -193,70 +187,79 @@ string regPrompts(string opCode){
         }
     cout << endl;
     if (opCode == "000000"){    // R-TYPE instructions
-        rinstructionPrompts(rd, rs, rt);
+        instruction = rinstructionPrompts(funcCode);
     } else if (opCode == "001000"){
-        addiInstructionPrompts(rt, rs, immediate);
+        instruction = addiInstructionPrompts();
     } else if ((opCode == "100011") || (opCode == "101011")){
-        lswInstructionPrompts(rt, offset, rs, opCode);
+        instruction = lswInstructionPrompts(opCode);
     } else if ((opCode == "000100") || (opCode == "000101")){
-        branchInstructionPrompts(rs, rt, label);
+        branchInstructionPrompts();     // figure out converion for label to binary first
     } // ADD JUMPING INSTRUCTION!!
-    return "0"; // return converted instruction in binary
+    return instruction; // return converted instruction in binary
 }
 
-void rinstructionPrompts (int rd, int rs, int rt){
+string rinstructionPrompts (string funcCode){
+    string instruction;
     cout << "Enter the destination register (rd): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rd = getRegIndex();
+    int rd = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl << "Enter the starting register (rs): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rs = getRegIndex();
+    int rs = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl << "Enter the second register (rt): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rt = getRegIndex();
+    int rt = getRegIndex();
+
+    return "000000" + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + int_to_binary(rd).substr(27,5) + "00000" + funcCode;
 }
 
-void addiInstructionPrompts(int rt, int rs, string immediate){
+string addiInstructionPrompts(){
     cout << "Enter the destination register (rt): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rt = getRegIndex();
+    int rt = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl << "Enter the first register (rs): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rs = getRegIndex();
+    int rs = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl;
-    immediate = getImmediate();
+    string immediate = getImmediate();
+    return "001000" + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + immediate.substr(16,16);
 }
 
-void lswInstructionPrompts(int rt, string offset, int rs, string opCode){
+string lswInstructionPrompts(string opCode){
     if (opCode == "100011"){
         cout << "Enter the destination register (rt): " << endl;
     } else if (opCode == "101011"){
         cout << "Enter the register being stored (rt): " << endl;
     }
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rt = getRegIndex();
+    int rt = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl;
-    offset = getAddressOffset();
+    string offset = getAddressOffset();
     userInstruction = userInstruction + "(";
     cout << endl << "Enter reference register for addressing: " << endl;
-    rs = getRegIndex();
+    int rs = getRegIndex();
     userInstruction = userInstruction + ")";
+    return opCode + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + offset.substr(16,16);
 }
 
-void branchInstructionPrompts(int rs, int rt, string label){
+void branchInstructionPrompts(){
     cout << "Enter the starting register (rs): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rs = getRegIndex();
+    int rs = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl << "Enter the second register (rt): " << endl;
     cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
-    rt = getRegIndex();
+    int rt = getRegIndex();
     userInstruction = userInstruction + ", ";
     cout << endl;
-    label = getLabel();
+    string label = getLabel();
+}
+
+void jumpInstructionPrompts(){
+    
 }

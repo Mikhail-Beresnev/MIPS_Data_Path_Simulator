@@ -21,11 +21,11 @@ int getRegIndex();
 string getImmediate();
 string getAddressOffset();
 string getLabel();
-string regPrompts(string opCode);
-void rinstructionPrompts(int rd, int rs, int rt);
-void addiInstructionPrompts(int rt, int rs, string immediate);
-void lswInstructionPrompts(int rt, string offset, int rs, string opCode);
-void branchInstructionPrompts(int rs, int rt, string label);
+string regPrompts(string opCode, string funcCode);
+string rinstructionPrompts(string funcCode);
+string addiInstructionPrompts();
+string lswInstructionPrompts(string opCode);
+void branchInstructionPrompts();
 void jumpInstructionPrompts();
 
 #endif

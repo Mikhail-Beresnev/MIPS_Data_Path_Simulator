@@ -24,21 +24,18 @@ int rdIndex;
 string addressOrImmediate;
 
 int main() {
+    string input;
+    string funcCode = "0";
     string operation = getOperation();
     string opCode = generateOpCode(operation);
     if (opCode == "000000"){
-        string funcCode = generateFuncCode(operation);
+        funcCode = generateFuncCode(operation);
     }
-    regPrompts(opCode);
+    input = regPrompts(opCode, funcCode);
     cout << endl << "Your instruction: " << userInstruction << endl;
+    cout << "Binary Form: " << input << endl;
     // string label = getLabel();                       // NOT PROGRAMMED YET
     // regPrompts();                                    // NOT PROGRAMMED YET
-
-    // string binaryTest = int_to_binary(testVal);
-    // cout << binaryTest << endl;
-    // string input = "00100001000000111000000000001111";
-    // idStage(input);
-
 
     return 0;
 }
