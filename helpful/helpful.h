@@ -15,4 +15,6 @@ unsigned long binary_to_int(string input);
 
 string int_to_binary(unsigned long input);
 
+string extract_bits(string input, int start, int end);
+
 #endif
