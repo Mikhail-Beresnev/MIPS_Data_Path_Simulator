@@ -101,6 +101,15 @@ void triple_input_test(string functionName, string function, string expected, st
 }
 
 void test() {
+    // IF
+
+    // ID
+
+    // EXE
+
+    // MEM
+
+    // WB
 
 }
 
