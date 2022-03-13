@@ -33,6 +33,8 @@ void test_triple_input(string functionName, string (*function)(string, string, s
 int main() {
     // string input = userInput();
     overall();
+    string randAddress = labelToAddress("000010");
+    cout << randAddress << endl;
     // idStage(input);
     // string label = getLabel();                       // NOT PROGRAMMED YET
     // regPrompts();                                    // NOT PROGRAMMED YET
