@@ -25,6 +25,5 @@ string alu_control(string aluop, string funct);
 
 string and_gate(string input_1, string input_2);
 
-
 #endif
 

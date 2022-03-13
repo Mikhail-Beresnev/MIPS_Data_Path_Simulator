@@ -70,6 +70,7 @@ string alu_slt(string input_1, string input_2) {
 }
 
 string alu_control(string aluop, string funct) {
+    aluop = aluop.substr(8,2);
     funct = funct.substr(2, 4);
     // load/store word
     if (aluop == "00") {
