@@ -24,7 +24,19 @@ int rtIndex;
 int rdIndex;
 string addressOrImmediate;
 
+string userInput();
+
 int main() {
+    string input = userInput();
+
+    idStage(input);
+    // string label = getLabel();                       // NOT PROGRAMMED YET
+    // regPrompts();                                    // NOT PROGRAMMED YET
+
+    return 0;
+}
+
+string userInput() {
     string input;
     string funcCode = "0";
     int instructionInputType = -1;
@@ -48,10 +60,6 @@ int main() {
         cout << endl << "Your instruction: " << userInstruction << endl;
         cout << "Binary Form: " << input << endl;
     }
-
-    idStage(input);
-    // string label = getLabel();                       // NOT PROGRAMMED YET
-    // regPrompts();                                    // NOT PROGRAMMED YET
-
-    return 0;
+    return input;
 }
+
