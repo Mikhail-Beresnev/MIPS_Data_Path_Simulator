@@ -15,7 +15,7 @@ extern string addressOrImmediate;
 
 string controlUnit (string input);  // determines control signals from binary input
 void registerFile (string input, string controlSignals);    // defines rd, rs, rt from binary input
-string instructionType (string input, string controlSignals); // reads func field of r-type instruction to determine operation
+string instructionType (string funcCode, string controlSignals); // reads func field of r-type instruction to determine operation
 void signExtend ();
 void idStage (string input);
 
