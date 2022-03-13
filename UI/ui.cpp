@@ -5,7 +5,7 @@ string getOperation(){
     int choice = 0;    // purposely set to invalid value
 
     while ((choice < 1) || (choice > 16)){
-        cout << "Enter instruction operation: " << endl;
+        cout << "Enter instruction operation (enter associated integer from below): " << endl;
         cout << "ADD: 1, SUB: 2, MULT: 3, DIV: 4, OR: 5, NOR: 6, XOR: 7, AND: 8, " << endl;
         cout << "SLL: 9, SRL: 10, ADDI: 11, BNE: 12, BEQ: 13, LW: 14, SW: 15, J: 16" << endl;
         cin >> choice;
@@ -67,77 +67,88 @@ string getOperation(){
             break;
         }
     }
-
+    userInstruction = operation + " ";
     return operation;
 }
 
 string generateOpCode(string operation){
-    return "0"; // produce op code code from operation selected
+    string opCode = "0";
+    if (operation == "BEQ"){
+        opCode = "000100";
+    } else if (operation == "BNE"){
+        opCode = "000100";
+    } else if (operation == "LW"){
+        opCode = "100011";
+    } else if (operation == "SW"){
+        opCode = "101011";
+    } else if (operation == "ADDI"){
+        opCode = "001000";
+    } else if (operation == "J"){
+        opCode = "000010";
+    } else {
+        opCode = "000000"; // All R-TYPE instructions
+    }
+    return opCode; // produce op code code from operation selected
 }
 
 string generateFuncCode(string operation){
-    return "0"; // produce func code for R-TYPE instructions from operation selected
+    string funcCode = "0";
+    if (operation == "ADD"){
+        funcCode = "100000";
+    } else if (operation == "AND"){
+        funcCode = "100100";
+    } else if (operation == "DIV"){
+        funcCode = "011010";
+    } else if (operation == "MULT"){
+        funcCode = "011000";
+    } else if (operation == "NOR"){
+        funcCode = "100111";
+    } else if (operation == "OR"){
+        funcCode = "100101";
+    } else if (operation == "SRL"){
+        funcCode = "000010";
+    } else if (operation == "SUB"){
+        funcCode = "100010";
+    } else if (operation == "XOR"){
+        funcCode = "100110";
+    } else if (operation == "SLL"){
+        funcCode = "000000";
+    } else {
+        funcCode = "111111";    // SHOULD NEVER HAPPEN
+    }
+    return funcCode; // produce func code for R-TYPE instructions from operation selected
 }
 
-string getDestinationReg(){
-    int choice = 0;
+int getRegIndex(){
+    string choice = "0";
+    int index = -1;
 
-    while ((choice < 4) || (choice > 25)){
-        cout << "Enter the destination register index (rd): " << endl;
-        cout << "NOTE: index 0-3 and 26-31 are reserved for the operating system." << endl;
+    while ((index < 4) || (index > 25)){
         cin >> choice;
-        if (((choice < 4) && (choice > -1)) || ((choice > 25) && (choice < 32))){
+        for (int i = 0; i < 32; i++){
+            if(choice == registers[0][i]){
+                index = i;
+            }
+        }
+        if (((index < 4) && (index > -1)) || ((index > 25) && (index < 32))){
             cout << "You have selected a reserved register location!" << endl;
             cout << "Please try again..." << endl;
-        } else if ((choice < 0) || (choice > 31)){
+        } else if ((index < 0) || (index > 31)){
             cout << "You have entered an invalid destination register!" << endl;
             cout << "Please try again..." << endl;
         }
     }
-    return int_to_binary(choice);
-}
-
-string getStartReg(){
-    int choice = 0;
-
-    while ((choice < 4) || (choice > 25)){
-        cout << "Enter the starting register index (rs): " << endl;
-        cout << "NOTE: index 0-3 and 26-31 are reserved for the operating system." << endl;
-        cin >> choice;
-        if (((choice < 4) && (choice > -1)) || ((choice > 25) && (choice < 32))){
-            cout << "You have selected a reserved register location!" << endl;
-            cout << "Please try again..." << endl;
-        } else if ((choice < 0) || (choice > 31)){
-            cout << "You have entered an invalid starting register!" << endl;
-            cout << "Please try again..." << endl;
-        }
-    }
-    return int_to_binary(choice);
-}
-
-string getSecondReg(){
-    int choice = 0;
-
-    while ((choice < 4) || (choice > 25)){
-        cout << "Enter the second register index (rt): " << endl;
-        cout << "NOTE: index 0-3 and 26-31 are reserved for the operating system." << endl;
-        cin >> choice;
-        if (((choice < 4) && (choice > -1)) || ((choice > 25) && (choice < 32))){
-            cout << "You have selected a reserved register location!" << endl;
-            cout << "Please try again..." << endl;
-        } else if ((choice < 0) || (choice > 31)){
-            cout << "You have entered an invalid second register!" << endl;
-            cout << "Please try again..." << endl;
-        }
-    }
-    return int_to_binary(choice);
+    userInstruction = userInstruction + choice;
+    return index;
 }
 
 string getImmediate(){
     int immediate = 0;
-    cout << "Enter immediate value (integer): " << endl;
+    cout << "Enter signed immediate value (integer): " << endl;
     cin >> immediate;
-    return int_to_binary(immediate);
+    string binaryVal = int_to_binary(immediate);
+    userInstruction = userInstruction + binaryVal;
+    return binaryVal;
 }
 
 string getAddressOffset(){
@@ -150,14 +161,102 @@ string getAddressOffset(){
             cout << "Please try again..." << endl;
         }
     } 
-    return int_to_binary(offset);
+    string binaryOffset = int_to_binary(offset);
+    userInstruction = userInstruction + binaryOffset;
+    return binaryOffset;
 }
 
 string getLabel(){
-    // NOT SURE HOW WE ARE GOING TO DO LABEL STUFF
-    return "0";
+    string label = "none";
+    cout << "Enter label (make sure exact same spelling and case): " << endl;
+    cin >> label;
+    userInstruction = userInstruction + label;
+    return label;
 }
 
-void regPrompts(string operation){
-    // control which prompts are shown based on operation selected
+string regPrompts(string opCode){
+    int rd;
+    int rs;
+    int rt;
+    string immediate;
+    string offset;
+    string label;
+
+    cout << endl << "Register Data: " << endl;
+        for (int i = 0; i < 32; i++){
+            cout << registers[0][i] << " = " << registers[1][i];
+            if ((i % 8) != 7){
+                cout << ", ";
+            } else {
+                cout << endl;
+            }
+        }
+    cout << endl;
+    if (opCode == "000000"){    // R-TYPE instructions
+        rinstructionPrompts(rd, rs, rt);
+    } else if (opCode == "001000"){
+        addiInstructionPrompts(rt, rs, immediate);
+    } else if ((opCode == "100011") || (opCode == "101011")){
+        lswInstructionPrompts(rt, offset, rs, opCode);
+    } else if ((opCode == "000100") || (opCode == "000101")){
+        branchInstructionPrompts(rs, rt, label);
+    } // ADD JUMPING INSTRUCTION!!
+    return "0"; // return converted instruction in binary
+}
+
+void rinstructionPrompts (int rd, int rs, int rt){
+    cout << "Enter the destination register (rd): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rd = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl << "Enter the starting register (rs): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rs = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl << "Enter the second register (rt): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rt = getRegIndex();
+}
+
+void addiInstructionPrompts(int rt, int rs, string immediate){
+    cout << "Enter the destination register (rt): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rt = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl << "Enter the first register (rs): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rs = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl;
+    immediate = getImmediate();
+}
+
+void lswInstructionPrompts(int rt, string offset, int rs, string opCode){
+    if (opCode == "100011"){
+        cout << "Enter the destination register (rt): " << endl;
+    } else if (opCode == "101011"){
+        cout << "Enter the register being stored (rt): " << endl;
+    }
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rt = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl;
+    offset = getAddressOffset();
+    userInstruction = userInstruction + "(";
+    cout << endl << "Enter reference register for addressing: " << endl;
+    rs = getRegIndex();
+    userInstruction = userInstruction + ")";
+}
+
+void branchInstructionPrompts(int rs, int rt, string label){
+    cout << "Enter the starting register (rs): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rs = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl << "Enter the second register (rt): " << endl;
+    cout << "NOTE: registers $0-$v1 and $k0-$ra are reserved for the operating system." << endl;
+    rt = getRegIndex();
+    userInstruction = userInstruction + ", ";
+    cout << endl;
+    label = getLabel();
 }

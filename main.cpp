@@ -10,37 +10,27 @@
 
 using namespace std;
 
-string registers[32] = {"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"};
+string registers[][32] = {
+{"$0","$at","$v0","$v1","$a0","$a1","$a2","$a3","$t0","$t1","$t2","$t3","$t4","$t5","$t6","$t7","$s0","$s1","$s2","$s3","$s4","$s5","$s6","$s7","$t8","$t9","$k0","$k1","$gp","$sp","$fp","$ra"},
+{"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"}
+};
 /**  Registers(all prefixed w/ $): zero (always 0), at (reserved for assembler), v0-v1 (return), a0-a3 (arguments), t0-t7 (temp), 
 *    s0-s7 (save regs), t8-t9 (temp), k0-k1 (kernel), gp (global pointer), sp (stack pointer), fp (frame pointer), ra (return address)
 **/
+string userInstruction;
 int rsIndex;
 int rtIndex;
 int rdIndex;
 string addressOrImmediate;
 
 int main() {
-    // int testVal = 5;
-    cout << "test" << endl;
-
-    cout << "Register Data: ";
-        for (int i = 0; i < 32; i++){
-            cout << registers[i];
-            if (i != 31){
-                cout << ", ";
-            } else {
-                cout << endl;
-            }
-        }
-
     string operation = getOperation();
-    // string opCode = generateOpCode(operation);      // NOT PROGRAMMED YET
-    // string funcCode = generateFuncCode(operation);  // NOT PROGRAMMED YET
-    string rd = getDestinationReg();
-    string rs = getStartReg();
-    string rt = getSecondReg();
-    string immediate = getImmediate();
-    string offset = getAddressOffset();
+    string opCode = generateOpCode(operation);
+    if (opCode == "000000"){
+        string funcCode = generateFuncCode(operation);
+    }
+    regPrompts(opCode);
+    cout << endl << "Your instruction: " << userInstruction << endl;
     // string label = getLabel();                       // NOT PROGRAMMED YET
     // regPrompts();                                    // NOT PROGRAMMED YET
 
