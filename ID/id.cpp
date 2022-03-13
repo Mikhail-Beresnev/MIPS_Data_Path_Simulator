@@ -51,11 +51,11 @@ void registerFile (string input, string controlSignals){
 
 string instructionType (string funcCode, string controlSignals) {
     string instructionType;
-
+    int func;
     if (controlSignals == "1001000010"){
-    // int func = stoi(input.substr(26,6));
+    func = stoi(funcCode);
     addressOrImmediate = "-1";    // clear address/immediate var for R-TYPE instructions
-    switch (funcCode){
+    switch (func){
         case 100000:
         instructionType = "ADD";
         break;
