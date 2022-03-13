@@ -26,9 +26,9 @@ string addressOrImmediate;
 
 string userInput();
 void test();
-void single_input_test(string input, string epexted, string function, string functionName);
-void double_input_test(string input, string, input_2, string epexted, string function, string functionName);
-void triple_input_test(string input, string, input_2, string input_3, string epexted, string function, string functionName);
+void single_input_test(string functionName, string function, string expected, string input);
+void double_input_test(string functionName, string function, string expected, string input, string input_2);
+void triple_input_test(string functionName, string function, string expected, string input, string input_2, string input_3);
 
 int main() {
     string input = userInput();
@@ -67,10 +67,10 @@ string userInput() {
     return input;
 }
 
-void single_input_test(string input, string epexted, string function, string functionName) {
+void single_input_test(string functionName, string function, string expected, string input) {
     string acutal = function(input);
     cout << functionName << " : ";
-    if (epexted == actual) {
+    if (expected == actual) {
         cout << "Pass";
     } else {
         cout << "Fail";
@@ -78,10 +78,10 @@ void single_input_test(string input, string epexted, string function, string fun
     cout << endl;
 }
 
-void double_input_test(string input, string, input_2, string epexted, string function, string functionName) {
+void double_input_test(string functionName, string function, string expected, string input, string input_2) {
     string acutal = function(input, input_2);
     cout << functionName << " : ";
-    if (epexted == actual) {
+    if (expected == actual) {
         cout << "Pass";
     } else {
         cout << "Fail";
@@ -89,10 +89,10 @@ void double_input_test(string input, string, input_2, string epexted, string fun
     cout << endl;
 }
 
-void triple_input_test(string input, string, input_2, string input_3, string epexted, string function, string functionName) {
+void triple_input_test(string functionName, string function, string expected, string input, string input_2, string input_3) {
     string acutal = function(input, input_2, input_3);
     cout << functionName << " : ";
-    if (epexted == actual) {
+    if (expected == actual) {
         cout << "Pass";
     } else {
         cout << "Fail";
@@ -101,7 +101,7 @@ void triple_input_test(string input, string, input_2, string input_3, string epe
 }
 
 void test() {
-    
+
 }
 
 
