@@ -176,13 +176,24 @@ string getLabel(){
 
 string regPrompts(string opCode, string funcCode){
     string instruction = "0";
-    cout << endl << "Register Data: " << endl;
-        for (int i = 0; i < 32; i++){
-            cout << registers[0][i] << " = " << registers[1][i];
-            if ((i % 8) != 7){
+    cout << endl << "Unreserved Register Data: " << endl;
+        for (int i = 0; i < 22; i++){
+            cout << registers[0][i+4] << " = " << registers[1][i+4];
+            if ((i % 11) != 10){
                 cout << ", ";
             } else {
                 cout << endl;
+            }
+        }
+    cout << "Reserved Register Data: " << endl;
+        for (int j = 0; j < 32; j++){
+            if ((j < 4) || (j > 25)){
+                cout << registers[0][j] << " = " << registers[1][j];
+                if ((j != 3) && (j != 31)){
+                    cout << ", ";
+                } else {
+                    cout << endl;
+                }
             }
         }
     cout << endl;
