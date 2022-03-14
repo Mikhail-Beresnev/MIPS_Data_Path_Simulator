@@ -23,7 +23,7 @@ string alu_slt(string input_1, string input_2);
 
 string alu_control(string aluop, string funct);
 
-string and_gate(string input_1, string input_2);
+string and_gate(char input_1, char input_2);
 
 #endif
 

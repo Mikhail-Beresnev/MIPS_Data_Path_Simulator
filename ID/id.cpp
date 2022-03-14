@@ -54,7 +54,7 @@ string instructionType (string input, string controlSignals) {
 
     if (controlSignals == "1001000010"){
     int func = stoi(input.substr(26,6));
-    addressOrImmediate = "-1";    // clear address/immediate var for R-TYPE instructions
+    // addressOrImmediate = "-1";    // clear address/immediate var for R-TYPE instructions
     switch (func){
         case 100000:
         instructionType = "ADD";

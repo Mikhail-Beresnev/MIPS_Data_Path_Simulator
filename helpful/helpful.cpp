@@ -50,3 +50,9 @@ string extend_reverse(string input) {
     }
     return input;
 }
+
+string char_to_string(char input) {
+    string output = "";
+    output += input;
+    return output;
+}

@@ -105,13 +105,20 @@ string alu_control(string aluop, string funct) {
     return "0";
 }
 
-string and_gate(string input_1, string input_2) {
+string and_gate(char input_1, char input_2) {
     string output = "";
-    if (input_1 == "1" && input_2 == "1") {
-        output = "1";
+    if (input_1 == '1' && input_2 == '1') {
+        output = '1';
     } else {
-        output = "0";
+        output = '0';
     }
     return output;
 }
 
+
+// multiply, divide
+// mult: 011000
+// div: 011010
+// xor: 100110
+
+// 

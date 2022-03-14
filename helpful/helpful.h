@@ -21,4 +21,6 @@ string extend(string input);
 
 string extend_reverse(string input);
 
+string char_to_string(char input);
+
 #endif

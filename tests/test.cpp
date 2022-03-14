@@ -20,7 +20,6 @@ void testAll() {
     test_double_input("ALU Slt", &alu_slt, extend("1"), extend("1"), extend("11"));
     test_double_input("ALU Control", &alu_control,  "110", "0000001001", "000000");
     test_triple_input("ALU", &alu, extend("0"), extend("11"), extend("1"), "111");
-    test_double_input("And Gate", &and_gate,  "0", "0", "1");
     
     // MEM
     // cout << endl << "Testing MEM stage: " << endl;
