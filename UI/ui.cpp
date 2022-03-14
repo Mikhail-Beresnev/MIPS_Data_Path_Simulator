@@ -271,18 +271,19 @@ string branchInstructionPrompts(string opCode){
     userInstruction = userInstruction + ", ";
     cout << endl;
     string label = getLabel();
-    string labelAddress = labelToAddress(label, opCode);
+    string labelAddress = labelToAddress(opCode);
     return opCode + int_to_binary(rs).substr(27,5) + int_to_binary(rt).substr(27,5) + labelAddress;
 }
 
 string jumpInstructionPrompts(string opCode){
     string label = getLabel();
-    string labelAddress = labelToAddress(label, opCode);
+    string labelAddress = labelToAddress(opCode);
     return opCode + labelAddress;
 }
 
-string labelToAddress(string label, string opCode){
+string labelToAddress(string opCode){
     int randomAddress = 1;
+
     while ((randomAddress % 4) != 0){
         randomAddress = rand();
     }

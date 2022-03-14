@@ -28,6 +28,6 @@ string addiInstructionPrompts();
 string lswInstructionPrompts(string opCode);
 string branchInstructionPrompts(string opCode);
 string jumpInstructionPrompts(string opCode);
-string labelToAddress(string label, string opCode);
+string labelToAddress(string opCode);
 
 #endif
