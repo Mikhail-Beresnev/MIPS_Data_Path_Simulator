@@ -30,7 +30,7 @@ void test_no_input(string functionName, string (*function)(), string expected);
 void test_single_input(string functionName, string (*function)(string), string expected, string input);
 void test_double_input(string functionName, string (*function)(string, string), string expected, string input, string input_2);
 void test_triple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3);
-void test_quadruple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3, string input_4);
+void test_quadruple_input(string functionName, string (*function)(string, string, string, string), string expected, string input, string input_2, string input_3, string input_4);
 
 int main() {
     // string input = userInput();
@@ -113,7 +113,7 @@ void test_triple_input(string functionName, string (*function)(string, string, s
     cout << endl;
 }
 
-void test_quadruple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3, string input_4) {
+void test_quadruple_input(string functionName, string (*function)(string, string, string, string), string expected, string input, string input_2, string input_3, string input_4) {
     string actual = function(input, input_2, input_3, input_4);
     cout << functionName << " : ";
     if (expected == actual) {
