@@ -29,5 +29,6 @@ string lswInstructionPrompts(string opCode);
 string branchInstructionPrompts(string opCode);
 string jumpInstructionPrompts(string opCode);
 string labelToAddress(string opCode);
+string userInput();
 
 #endif

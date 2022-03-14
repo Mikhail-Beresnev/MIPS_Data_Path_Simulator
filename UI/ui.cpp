@@ -293,3 +293,30 @@ string labelToAddress(string opCode){
         return int_to_binary(randomAddress).substr(6,26);   // 26 bit address for jumping
     }
 }
+
+string userInput() {
+    string input;
+    string funcCode = "0";
+    int instructionInputType = -1;
+    cout << "Would you like to enter a 32-bit binary instruction or in MIPS format?" << endl;
+    while ((instructionInputType < 0) || (instructionInputType > 1)){
+        cout << "(0 for binary, 1 for MIPS)" << endl;
+        cin >> instructionInputType;
+        if ((instructionInputType < 0) || (instructionInputType > 1)){
+            cout << "You have entered an invalid input!" << endl << "Please try again..." << endl;
+        }
+    }
+    if (instructionInputType == 0){
+        input = binaryInput();
+    } else if (instructionInputType == 1){
+        string operation = getOperation();
+        string opCode = generateOpCode(operation);
+        if (opCode == "000000"){
+            funcCode = generateFuncCode(operation);
+        }
+        input = regPrompts(opCode, funcCode);
+        cout << endl << "Your instruction: " << userInstruction << endl;
+        cout << "Binary Form: " << input << endl;
+    }
+    return input;
+}
