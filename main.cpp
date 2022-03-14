@@ -26,7 +26,7 @@ string addressOrImmediate;
 
 string userInput();
 void overall(); // change name to test later
-void test_no_input(string functionName, string (*function)(string), string expected);
+void test_no_input(string functionName, string (*function)(), string expected);
 void test_single_input(string functionName, string (*function)(string), string expected, string input);
 void test_double_input(string functionName, string (*function)(string, string), string expected, string input, string input_2);
 void test_triple_input(string functionName, string (*function)(string, string, string), string expected, string input, string input_2, string input_3);
@@ -69,8 +69,8 @@ string userInput() {
     return input;
 }
 
-void test_no_input(string functionName, string (*function)(string), string expected){
-       string actual = function();
+void test_no_input(string functionName, string (*function)(), string expected){
+    string actual = function();
     cout << functionName << " : ";
     if (expected == actual) {
         cout << "Pass";
