@@ -13,5 +13,4 @@ extern string registers[][32];
 
 void writeback();
 
-#endwb
-
+#endif

@@ -5,6 +5,8 @@
 #include <string>
 #include <stdlib.h>
 #include "../helpful/helpful.h"
+#include "../WB/wb.h"
+#include "../IF/if.h"
 
 using namespace std;
 

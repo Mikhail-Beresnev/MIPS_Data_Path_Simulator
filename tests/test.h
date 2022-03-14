@@ -2,6 +2,13 @@
 #define TEST
 
 #include <string>
+#include <iostream>
+#include "../EXE/exe.h"
+#include "../ID/id.h"
+#include "../IF/if.h"
+#include "../UI/ui.h"
+#include "../helpful/helpful.h"
+#include "../tests/test.h"
 
 using namespace std;
 
