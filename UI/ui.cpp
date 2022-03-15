@@ -6,8 +6,11 @@ string getOperation(){
 
     while ((choice < 1) || (choice > 16)){
         cout << "Enter instruction operation (enter associated integer from below): " << endl;
-        cout << "ADD: 1, SUB: 2, MULT: 3, DIV: 4, OR: 5, NOR: 6, XOR: 7, AND: 8, " << endl;
-        cout << "SLL: 9, SRL: 10, ADDI: 11, BNE: 12, BEQ: 13, LW: 14, SW: 15, J: 16" << endl;
+        // cout << "ADD: 1, SUB: 2, MULT: 3, DIV: 4, OR: 5, NOR: 6, XOR: 7, AND: 8, " << endl;
+        // cout << "SLL: 9, SRL: 10, ADDI: 11, BNE: 12, BEQ: 13, LW: 14, SW: 15, J: 16" << endl;
+        cout << "ADD: 1, SUB: 2, MULT: 3, DIV: 4, OR: 5," << endl;
+        cout << "NOR: 6, AND: 7, ADDI: 8, LW: 9, SW: 10" << endl;
+        // No longer implementing XOR, SLL, SRL, BNE, BEQ, or J in final code
         cin >> choice;
         if ((choice < 1) || (choice > 16)){
             cout << "You have entered an invalid instruction!" << endl;
@@ -34,34 +37,16 @@ string getOperation(){
             operation = "NOR";
             break;
             case 7:
-            operation = "XOR";
-            break;
-            case 8:
             operation = "AND";
             break;
-            case 9:
-            operation = "SLL";
-            break;
-            case 10:
-            operation = "SRL";
-            break;
-            case 11:
+            case 8:
             operation = "ADDI";
             break;
-            case 12:
-            operation = "BNE";
-            break;
-            case 13:
-            operation = "BEQ";
-            break;
-            case 14:
+            case 9:
             operation = "LW";
             break;
-            case 15:
+            case 10:
             operation = "SW";
-            break;
-            case 16:
-            operation = "J";
             break;
             default:
             break;
@@ -178,22 +163,12 @@ string regPrompts(string opCode, string funcCode){
     string instruction = "0";
     cout << endl << "Unreserved Register Data: " << endl;
         for (int i = 0; i < 22; i++){
-            cout << registers[0][i+4] << " = " << registers[1][i+4];
-            if ((i % 11) != 10){
-                cout << ", ";
-            } else {
-                cout << endl;
-            }
+            cout << registers[0][i+4] << " = " << registers[1][i+4] << endl;
         }
     cout << "Reserved Register Data: " << endl;
         for (int j = 0; j < 32; j++){
             if ((j < 4) || (j > 25)){
-                cout << registers[0][j] << " = " << registers[1][j];
-                if ((j != 3) && (j != 31)){
-                    cout << ", ";
-                } else {
-                    cout << endl;
-                }
+                cout << registers[0][j] << " = " << registers[1][j] << endl;
             }
         }
     cout << endl;

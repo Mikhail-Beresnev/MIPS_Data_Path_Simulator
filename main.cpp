@@ -44,9 +44,14 @@ map<string, string> data;
 int main() {
     string input;
     // testAll();
-    
-    input = userInput();
-    run(input);
+    char again = 'y';
+    while (again == 'y'){
+        input = userInput();
+        run(input);
+        cout << endl << "Would you like to input another instruction? (y/n)" << endl;
+        cin >> again;
+    }
+
     // op, rs, rt, immediate
 
 
