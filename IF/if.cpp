@@ -47,10 +47,8 @@ return "0"; // TEMPORARY SO NO COMPILE ERRORS
 
 string Mux(string input00, string input01, string controlSignal){
   if(controlSignal == "0"){
-return input00;
+    return input00;
+  } else { 
+    return input01;
   }
- else { 
-return input01;
-  }
-
 }

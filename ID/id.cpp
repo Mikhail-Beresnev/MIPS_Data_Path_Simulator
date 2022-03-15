@@ -107,14 +107,10 @@ string instructionType (string input, string controlSignals) {
 }
 
 void signExtend (){
-    int significantBit = stoi(addressOrImmediate.substr(0,1));
-    string extendBits;
-    if (significantBit == 1){
-        extendBits = "1111111111111111";
-    } else if (significantBit == 0){
-        extendBits = "0000000000000000";
+    string significant = addressOrImmediate.substr(0,1);
+    while (addressOrImmediate.size() != 32) {
+        addressOrImmediate = significant + addressOrImmediate;
     }
-    addressOrImmediate = extendBits + addressOrImmediate;
 }
 
  void idStage (string input){

@@ -24,6 +24,31 @@ string sub_binary(string input_1, string input_2) {
     return output;
 }
 
+string mult_binary(string input_1, string input_2) {
+
+    unsigned long x = bitset<32>(input_1).to_ulong();
+    unsigned long y = bitset<32>(input_2).to_ulong();
+
+    unsigned long result = x * y;
+
+    string output = bitset<32>(result).to_string();
+
+    return output;
+}
+
+
+string div_binary(string input_1, string input_2) {
+
+    unsigned long x = bitset<32>(input_1).to_ulong();
+    unsigned long y = bitset<32>(input_2).to_ulong();
+
+    unsigned long result = x / y;
+
+    string output = bitset<32>(result).to_string();
+
+    return output;
+}
+
 unsigned long binary_to_int(string input) {
     return bitset<32>(input).to_ulong();
 }
@@ -55,4 +80,8 @@ string char_to_string(char input) {
     string output = "";
     output += input;
     return output;
+}
+
+void print(string input) {
+    cout << input << endl;
 }

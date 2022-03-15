@@ -15,6 +15,10 @@ string alu_add(string input_1, string input_2);
 
 string alu_sub(string input_1, string input_2);
 
+string alu_mult(string input_1, string input_2);
+
+string alu_div(string input_1, string input_2);
+
 string alu_and(string input_1, string input_2);
 
 string alu_or(string input_1, string input_2);
@@ -24,6 +28,8 @@ string alu_slt(string input_1, string input_2);
 string alu_control(string aluop, string funct);
 
 string and_gate(char input_1, char input_2);
+
+int determine_add_type(string input);
 
 #endif
 

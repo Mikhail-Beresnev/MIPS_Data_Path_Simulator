@@ -22,7 +22,11 @@ string alu(string input_1, string input_2, string control) {
     } else if (control == "111") {
         // slt
         output = alu_slt(input_1, input_2);
-    } 
+    } else if (control == "100") {
+        output = alu_mult(input_1, input_2);
+    } else if (control == "101") {
+        output = alu_div(input_1, input_2);
+    }
     return output;
 }
 
@@ -32,6 +36,14 @@ string alu_add(string input_1, string input_2) {
 
 string alu_sub(string input_1, string input_2) {
     return sub_binary(input_1, input_2);
+}
+
+string alu_mult(string input_1, string input_2) {
+    return mult_binary(input_1, input_2);
+}
+
+string alu_div(string input_1, string input_2) {
+    return div_binary(input_1, input_2);
 }
 
 string alu_and(string input_1, string input_2) {
@@ -71,7 +83,6 @@ string alu_slt(string input_1, string input_2) {
 
 string alu_control(string aluop, string funct) {
     aluop = aluop.substr(8,2);
-    funct = funct.substr(2, 4);
     // load/store word
     if (aluop == "00") {
         return "010"; //add
@@ -80,16 +91,23 @@ string alu_control(string aluop, string funct) {
     if (aluop == "01") {
         return "110"; //sub
     }
-
     if (aluop.at(0) == '1') {
+        if (funct == "011000" && aluop.at(1) == '0') {
+            return "100"; // multiply
+        }
+        if (funct == "011010" && aluop.at(1) == '0') {
+            return "101"; // divide
+        }
+
+        funct = funct.substr(2, 4);
         //certain 0's
-        if (funct == "0000" && aluop.at(0) == '0') {
+        if (funct == "0000" && aluop.at(1) == '0') {
             return "010"; //add
         }
-        if (funct == "0100" && aluop.at(0) == '0') {
+        if (funct == "0100" && aluop.at(1) == '0') {
             return "000"; //and
         }
-        if (funct == "0101" && aluop.at(0) == '0') {
+        if (funct == "0101" && aluop.at(1) == '0') {
             return "001"; //or
         }
 
@@ -102,7 +120,7 @@ string alu_control(string aluop, string funct) {
         }
     }
 
-    return "0";
+    return "ERROR";
 }
 
 string and_gate(char input_1, char input_2) {
@@ -115,10 +133,18 @@ string and_gate(char input_1, char input_2) {
     return output;
 }
 
+int determine_add_type(string input) {
+    if (input == "100011" || input == "101011") {
+        return 2;
+    } else {
+        return 1;
+    }
+}
+
 
 // multiply, divide
-// mult: 011000
-// div: 011010
+// mult: 011000, 10
+// div: 011010, 10
 // xor: 100110
 
 // 

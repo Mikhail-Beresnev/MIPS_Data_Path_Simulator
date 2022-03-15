@@ -11,6 +11,10 @@ string add_binary(string input_1, string input_2);
 
 string sub_binary(string input_1, string input_2);
 
+string mult_binary(string input_1, string input_2);
+
+string div_binary(string input_1, string input_2);
+
 unsigned long binary_to_int(string input);
 
 string int_to_binary(unsigned long input);
@@ -22,5 +26,7 @@ string extend(string input);
 string extend_reverse(string input);
 
 string char_to_string(char input);
+
+void print(string input);
 
 #endif
