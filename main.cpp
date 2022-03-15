@@ -39,7 +39,7 @@ int rtIndex;
 int rdIndex;
 string addressOrImmediate = "000000";
 string program_counter = extend("0"); // 32 bits
-map<string, string> data;
+map<string, string> dataX;
 
 int main() {
     string input;
@@ -122,7 +122,7 @@ void run(string input) {
     print("alu control: " + o_alu_control);
     string o_m_mux = Mux(registers[1][rtIndex], addressOrImmediate, char_to_string(controlSignals.at(1)));
     print("middle mux: " + o_m_mux);
-    // determine if we are adding a data or an address
+    // determine if we are adding a dataX or an address
     string o_alu = alu(registers[determine_add_type(input.substr(0,6))][rsIndex], o_m_mux, o_alu_control);
     print("alu: " + o_alu);
 
@@ -138,12 +138,12 @@ void run(string input) {
     
     // MEM
     string o_data_memory = data_memory(registers[1][rtIndex], o_alu, char_to_string(controlSignals.at(5)),char_to_string(controlSignals.at(4)));
-    print("data memory: " + o_data_memory);
+    print("dataX memory: " + o_data_memory);
     string o_r_mux = Mux(o_alu, o_data_memory, char_to_string(controlSignals.at(2)));
     print("right mux: " + o_r_mux);
     // WB
     program_counter = o_u_mux;
     print("program counter: " + program_counter);
-    print("data: " + o_r_mux);
-    // print("data: " + data[extend("10100")]);
+    print("dataX: " + o_r_mux);
+    // print("dataX: " + dataX[extend("10100")]);
 }

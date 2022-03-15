@@ -4,9 +4,9 @@
 string controlUnit (string input) {
     string controlSignals; // RegDst, ALUSrc, MemtoReg, RegWrite, MemRead, MemWrite, Branch, Jump, ALUOp1, ALUOp0
     // ALUOp1 & 0 are one signal with two bits output
-    int data = stoi(input.substr(0, 6));  // instruction bits 31-26
+    int dataX = stoi(input.substr(0, 6));  // instruction bits 31-26
 
-    switch (data){
+    switch (dataX){
     case 100:  // BEQ (000100)
     controlSignals = "0000001001";
     break;

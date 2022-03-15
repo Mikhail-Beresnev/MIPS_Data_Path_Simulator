@@ -267,6 +267,7 @@ string labelToAddress(string opCode){
     } else if (opCode == "000010"){
         return int_to_binary(randomAddress).substr(6,26);   // 26 bit address for jumping
     }
+    return "0";
 }
 
 string userInput() {

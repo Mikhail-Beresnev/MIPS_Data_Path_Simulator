@@ -6,17 +6,17 @@ string data_memory(string write_data, string address, string mem_write, string m
         return "ERROR";
     }
     if (mem_write == "1") {
-        data[address] = write_data;
-        // data.insert(make_pair(address, write_data));
+        dataX[address] = write_data;
+        // dataX.insert(make_pair(address, write_data));
         // return nothing
         return "ERROR"; // if this is accesed, it is an error
     }
 
     if (mem_read == "1") {
-        return data[address];
+        return dataX[address];
     }
     return "0";
 
 }
 
-// TODO: write a one time function to add stuff into data memory
+// TODO: write a one time function to add stuff into dataX memory
