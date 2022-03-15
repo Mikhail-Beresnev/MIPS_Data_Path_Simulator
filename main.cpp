@@ -9,6 +9,7 @@
 #include "./UI/ui.h"
 #include "./helpful/helpful.h"
 #include "./tests/test.h"
+#include "WB/wb.h"
 
 using namespace std;
 
@@ -100,9 +101,6 @@ int main() {
     run("00000000101001000011000000100101");
     */
 
-
-
-
     return 0;
 }
 
@@ -142,6 +140,7 @@ void run(string input) {
     string o_r_mux = Mux(o_alu, o_data_memory, char_to_string(controlSignals.at(2)));
     print("right mux: " + o_r_mux);
     // WB
+    writeback(input, o_r_mux);
     program_counter = o_u_mux;
     print("program counter: " + program_counter);
     print("dataX: " + o_r_mux);

@@ -4,7 +4,8 @@ g++ -g -o id.o -c ./ID/id.cpp
 g++ -g -o if.o -c ./IF/if.cpp
 g++ -g -o exe.o -c ./EXE/exe.cpp
 g++ -g -o mem.o -c ./MEM/mem.cpp
+g++ -g -o wb.o -c ./WB/wb.cpp
 g++ -g -o ui.o -c ./UI/ui.cpp
 g++ -g -o test.o -c ./tests/test.cpp
-g++ main.o helpful.o id.o if.o exe.o mem.o ui.o test.o -o run
+g++ main.o helpful.o id.o if.o exe.o mem.o wb.o ui.o test.o -o run
 ./run

@@ -90,9 +90,9 @@ string instructionType (string input, string controlSignals) {
     } else if (controlSignals == "0000001001"){ // BRANCHING
         int branch = stoi(input.substr(0, 6));
         if (branch == 100){
-            instructionType == "BEQ";
+            instructionType = "BEQ";
         } else if (branch == 101){
-            instructionType == "BNE";
+            instructionType = "BNE";
         }
     } else if (controlSignals == "0111100000"){
         instructionType = "LW";
@@ -101,7 +101,7 @@ string instructionType (string input, string controlSignals) {
     } else if (controlSignals == "0101000000"){
         instructionType = "ADDI";
     } else if (controlSignals == "0000000100"){
-        instructionType == "J";
+        instructionType = "J";
     }
     return instructionType;
 }
