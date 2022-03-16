@@ -161,17 +161,6 @@ string getLabel(){
 
 string regPrompts(string opCode, string funcCode){
     string instruction = "0";
-    cout << endl << "Unreserved Register Data: " << endl;
-        for (int i = 0; i < 22; i++){
-            cout << registers[0][i+4] << " = " << registers[1][i+4] << endl;
-        }
-    cout << "Reserved Register Data: " << endl;
-        for (int j = 0; j < 32; j++){
-            if ((j < 4) || (j > 25)){
-                cout << registers[0][j] << " = " << registers[1][j] << endl;
-            }
-        }
-    cout << endl;
     if (opCode == "000000"){    // R-TYPE instructions
         instruction = rinstructionPrompts(funcCode);
     } else if (opCode == "001000"){
@@ -282,6 +271,19 @@ string userInput() {
             cout << "You have entered an invalid input!" << endl << "Please try again..." << endl;
         }
     }
+
+    cout << endl << "Unreserved Register Data: " << endl;
+    for (int i = 0; i < 22; i++){
+        cout << registers[0][i+4] << " = " << registers[1][i+4] << endl;
+    }
+    cout << "Reserved Register Data: " << endl;
+    for (int j = 0; j < 32; j++){
+        if ((j < 4) || (j > 25)){
+            cout << registers[0][j] << " = " << registers[1][j] << endl;
+        }
+    }
+    cout << endl;
+
     if (instructionInputType == 0){
         input = binaryInput();
     } else if (instructionInputType == 1){
